@@ -157,6 +157,9 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Registrarse"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jbregistrarpersonaMouseClicked"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel12">
           <Properties>
@@ -293,6 +296,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Registrarse"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jbregistrarseActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

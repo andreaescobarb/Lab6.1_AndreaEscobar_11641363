@@ -5,6 +5,9 @@
  */
 package lab6.pkg1_progra2_andreaescobar;
 
+import java.util.Date;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author andre
@@ -72,6 +75,11 @@ public class Correo extends javax.swing.JFrame {
         jLabel11.setText("Teléfono");
 
         jbregistrarpersona.setText("Registrarse");
+        jbregistrarpersona.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jbregistrarpersonaMouseClicked(evt);
+            }
+        });
 
         jLabel12.setText("Confirmar Contraseña");
 
@@ -191,6 +199,11 @@ public class Correo extends javax.swing.JFrame {
         });
 
         jbregistrarse.setText("Registrarse");
+        jbregistrarse.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbregistrarseActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -246,6 +259,69 @@ public class Correo extends javax.swing.JFrame {
     private void tfapellidoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfapellidoActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfapellidoActionPerformed
+
+    private void jbregistrarpersonaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jbregistrarpersonaMouseClicked
+        // TODO add your handling code here:
+        AdministradorCorreos admin = new AdministradorCorreos("./salida.txt");
+        String nombre, apellido, passcode, confirmpasscode, pais, correo;
+        Date fechanacimiento;
+        int tel;
+
+        boolean confirmarcorreo = false;
+        try {
+            nombre = tfnombre.getText();
+            apellido = tfapellido.getText();
+            correo = tfcorreo.getText();
+            fechanacimiento = jdfechanacimiento.getDate();
+            pais = tfpais.getText();
+            tel = Integer.parseInt(tftelefono.getText());
+            confirmpasscode = pfconfirmarpasss.getText();
+            passcode = pfpassword.getText();
+
+            if (confirmpasscode.equals(passcode)) {
+                admin.cargarArchivo();
+                for (Personas persona : admin.getPersonas()) {
+                    if (persona.getCorreo().equals(correo)) {
+                        confirmarcorreo = true;
+                    }
+                }
+                if (confirmarcorreo == false) {
+                    admin.cargarArchivo();
+                    admin.getPersonas().add(new Personas(nombre, apellido, correo + "@unitec.edu", fechanacimiento, pais, tel, passcode));
+                    admin.escribirArchivo();
+                    
+                    tfnombre.setText("");
+                    tfapellido.setText("");
+                    tfcorreo.setText("");
+                    jdfechanacimiento.setDate(null);
+                    tfpais.setText("");
+                    tftelefono.setText("");
+                    pfpassword.setText("");
+                    pfconfirmarpasss.setText("");
+                } else {
+                    JOptionPane.showMessageDialog(this, "Lo sentimos! Este correo ya existe. Intenta de nuevo");
+                    tfcorreo.setText("");
+                }
+            } else{
+                JOptionPane.showMessageDialog(this, "Lo sentimos, las dos contraseñas no son iguales"+"\n"+"Intenta de nuevo");
+                pfconfirmarpasss.setText("");
+                pfpassword.setText("");
+            }
+
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(this, "Lo siento elementos no validos");
+        }
+
+
+    }//GEN-LAST:event_jbregistrarpersonaMouseClicked
+
+    private void jbregistrarseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbregistrarseActionPerformed
+        // TODO add your handling code here:
+        jdregistrarse.pack();
+        jdregistrarse.setModal(true);
+        jdregistrarse.setVisible(true);
+        jdregistrarse.setLocationRelativeTo(this);
+    }//GEN-LAST:event_jbregistrarseActionPerformed
 
     /**
      * @param args the command line arguments
