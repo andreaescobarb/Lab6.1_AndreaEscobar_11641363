@@ -51,6 +51,7 @@ public class Correo extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         pfpassword = new javax.swing.JPasswordField();
         pfconfirmarpasss = new javax.swing.JPasswordField();
+        jdlogin = new javax.swing.JDialog();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -182,6 +183,17 @@ public class Correo extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
+        javax.swing.GroupLayout jdloginLayout = new javax.swing.GroupLayout(jdlogin.getContentPane());
+        jdlogin.getContentPane().setLayout(jdloginLayout);
+        jdloginLayout.setHorizontalGroup(
+            jdloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 630, Short.MAX_VALUE)
+        );
+        jdloginLayout.setVerticalGroup(
+            jdloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 479, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -277,8 +289,11 @@ public class Correo extends javax.swing.JFrame {
             tel = Integer.parseInt(tftelefono.getText());
             confirmpasscode = pfconfirmarpasss.getText();
             passcode = pfpassword.getText();
+           
 
             if (confirmpasscode.equals(passcode)) {
+                System.out.println("entre");
+                System.out.println("size: " + admin.getPersonas().size());
                 admin.cargarArchivo();
                 for (Personas persona : admin.getPersonas()) {
                     if (persona.getCorreo().equals(correo)) {
@@ -377,6 +392,7 @@ public class Correo extends javax.swing.JFrame {
     private javax.swing.JButton jbregistrarpersona;
     private javax.swing.JButton jbregistrarse;
     private com.toedter.calendar.JDateChooser jdfechanacimiento;
+    private javax.swing.JDialog jdlogin;
     private javax.swing.JDialog jdregistrarse;
     private javax.swing.JPasswordField pfconfirmarpasss;
     private javax.swing.JPasswordField pfpassword;
