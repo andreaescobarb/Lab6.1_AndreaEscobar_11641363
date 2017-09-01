@@ -64,17 +64,15 @@ public class AdministradorCorreos {
 
     public void cargarArchivo() {
         if (archivo.exists()) {
-            System.out.println("entre cargar");
             Scanner sc = null;
             personas = new ArrayList();
 
             try {
-                sc = new Scanner(archivo.getPath());
+                sc = new Scanner(archivo);
                 sc.useDelimiter(";");
                 while (sc.hasNext()) {
                     personas.add(new Personas(sc.next(),sc.next(),sc.next(), new SimpleDateFormat("dd/MM/yyyy").parse(sc.next()),sc.next(), sc.nextInt(),sc.next()));
                     System.out.println(personas.size());
-                    System.out.println("entre cargar 2");
                 }
             } catch (Exception e) {
             }

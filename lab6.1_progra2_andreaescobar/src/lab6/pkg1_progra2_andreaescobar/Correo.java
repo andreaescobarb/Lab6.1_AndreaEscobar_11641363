@@ -5,6 +5,7 @@
  */
 package lab6.pkg1_progra2_andreaescobar;
 
+import java.util.ArrayList;
 import java.util.Date;
 import javax.swing.JOptionPane;
 
@@ -48,10 +49,23 @@ public class Correo extends javax.swing.JFrame {
         jdfechanacimiento = new com.toedter.calendar.JDateChooser();
         tftelefono = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         pfpassword = new javax.swing.JPasswordField();
         pfconfirmarpasss = new javax.swing.JPasswordField();
         jdlogin = new javax.swing.JDialog();
+        jTabbedPane1 = new javax.swing.JTabbedPane();
+        jTabbedPane2 = new javax.swing.JTabbedPane();
+        jTabbedPane3 = new javax.swing.JTabbedPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        mi_noleidos = new javax.swing.JMenuItem();
+        mi_leidos = new javax.swing.JMenuItem();
+        mi_borradores = new javax.swing.JMenuItem();
+        mi_spam = new javax.swing.JMenuItem();
+        mi_eliminados = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -96,8 +110,6 @@ public class Correo extends javax.swing.JFrame {
             }
         });
 
-        jLabel14.setText("@unitec.edu");
-
         javax.swing.GroupLayout jdregistrarseLayout = new javax.swing.GroupLayout(jdregistrarse.getContentPane());
         jdregistrarse.getContentPane().setLayout(jdregistrarseLayout);
         jdregistrarseLayout.setHorizontalGroup(
@@ -130,10 +142,8 @@ public class Correo extends javax.swing.JFrame {
                             .addComponent(pfpassword)
                             .addComponent(pfconfirmarpasss))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jdregistrarseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel13))))
-                .addContainerGap(69, Short.MAX_VALUE))
+                        .addComponent(jLabel13)))
+                .addContainerGap(130, Short.MAX_VALUE))
         );
         jdregistrarseLayout.setVerticalGroup(
             jdregistrarseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,7 +164,6 @@ public class Correo extends javax.swing.JFrame {
                         .addGroup(jdregistrarseLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel7)
                             .addComponent(jLabel13)
-                            .addComponent(jLabel14)
                             .addComponent(tfcorreo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addComponent(jLabel8))
@@ -183,15 +192,78 @@ public class Correo extends javax.swing.JFrame {
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
 
+        jTabbedPane1.addTab("Enviar Mensaje", jTabbedPane2);
+        jTabbedPane1.addTab("Mensajes Leidos", jTabbedPane3);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 638, Short.MAX_VALUE)
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 339, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("tab3", jPanel1);
+
+        jLabel15.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel15.setText("Buzon");
+
+        jMenu1.setText("Perfil");
+
+        jMenuItem1.setText("Enviar Mensajes");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem1);
+
+        mi_noleidos.setText("No leidos");
+        jMenu1.add(mi_noleidos);
+
+        mi_leidos.setText("Leidos");
+        jMenu1.add(mi_leidos);
+
+        mi_borradores.setText("Borradores");
+        jMenu1.add(mi_borradores);
+
+        mi_spam.setText("Spam");
+        jMenu1.add(mi_spam);
+
+        mi_eliminados.setText("Eliminados");
+        jMenu1.add(mi_eliminados);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Edit");
+        jMenuBar1.add(jMenu2);
+
+        jdlogin.setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout jdloginLayout = new javax.swing.GroupLayout(jdlogin.getContentPane());
         jdlogin.getContentPane().setLayout(jdloginLayout);
         jdloginLayout.setHorizontalGroup(
             jdloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 630, Short.MAX_VALUE)
+            .addGroup(jdloginLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jdloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTabbedPane1)
+                    .addGroup(jdloginLayout.createSequentialGroup()
+                        .addComponent(jLabel15)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jdloginLayout.setVerticalGroup(
             jdloginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 479, Short.MAX_VALUE)
+            .addGroup(jdloginLayout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jLabel15)
+                .addGap(18, 18, 18)
+                .addComponent(jTabbedPane1)
+                .addContainerGap())
         );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -261,7 +333,22 @@ public class Correo extends javax.swing.JFrame {
 
     private void jbloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbloginActionPerformed
         // TODO add your handling code here:
-        System.out.println("HOla");
+        String correo = JOptionPane.showInputDialog("Ingrese su correo");
+        String password = JOptionPane.showInputDialog("Ingrese su password");
+        for (Personas usuario : usuarios) {
+            System.out.println("Entra al for");
+            if (correo.equals(usuario.getCorreo())) {
+                if (password.equals(usuario.getPass())) {
+                    jdlogin.pack();
+                    jdlogin.setModal(true);
+                    jdlogin.setVisible(true);
+                    jdlogin.setLocationRelativeTo(this);
+                }
+            }
+            else{
+                JOptionPane.showMessageDialog(this, "Lo siento, su usuario o passcode es incorrecta");
+            }
+        }
     }//GEN-LAST:event_jbloginActionPerformed
 
     private void tfnombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfnombreActionPerformed
@@ -289,21 +376,21 @@ public class Correo extends javax.swing.JFrame {
             tel = Integer.parseInt(tftelefono.getText());
             confirmpasscode = pfconfirmarpasss.getText();
             passcode = pfpassword.getText();
-           
 
             if (confirmpasscode.equals(passcode)) {
-                System.out.println("entre");
+                /*System.out.println("entre");
                 System.out.println("size: " + admin.getPersonas().size());
-                admin.cargarArchivo();
-                for (Personas persona : admin.getPersonas()) {
+                admin.cargarArchivo();*/
+                for (Personas persona : usuarios) {
                     if (persona.getCorreo().equals(correo)) {
                         confirmarcorreo = true;
                     }
                 }
                 if (confirmarcorreo == false) {
-                    admin.cargarArchivo();
+                    /*admin.cargarArchivo();
                     admin.getPersonas().add(new Personas(nombre, apellido, correo + "@unitec.edu", fechanacimiento, pais, tel, passcode));
-                    admin.escribirArchivo();
+                    admin.escribirArchivo();*/
+                    usuarios.add(new Personas(nombre, apellido, correo, fechanacimiento, pais, tel, passcode));
                     
                     tfnombre.setText("");
                     tfapellido.setText("");
@@ -313,12 +400,14 @@ public class Correo extends javax.swing.JFrame {
                     tftelefono.setText("");
                     pfpassword.setText("");
                     pfconfirmarpasss.setText("");
+                    
+                    JOptionPane.showMessageDialog(jMenu1, "Usuario creado exitosamente!");
                 } else {
                     JOptionPane.showMessageDialog(this, "Lo sentimos! Este correo ya existe. Intenta de nuevo");
                     tfcorreo.setText("");
                 }
-            } else{
-                JOptionPane.showMessageDialog(this, "Lo sentimos, las dos contraseñas no son iguales"+"\n"+"Intenta de nuevo");
+            } else {
+                JOptionPane.showMessageDialog(this, "Lo sentimos, las dos contraseñas no son iguales" + "\n" + "Intenta de nuevo");
                 pfconfirmarpasss.setText("");
                 pfpassword.setText("");
             }
@@ -337,6 +426,10 @@ public class Correo extends javax.swing.JFrame {
         jdregistrarse.setVisible(true);
         jdregistrarse.setLocationRelativeTo(this);
     }//GEN-LAST:event_jbregistrarseActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -379,7 +472,7 @@ public class Correo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -388,12 +481,25 @@ public class Correo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTabbedPane jTabbedPane2;
+    private javax.swing.JTabbedPane jTabbedPane3;
     private javax.swing.JButton jblogin;
     private javax.swing.JButton jbregistrarpersona;
     private javax.swing.JButton jbregistrarse;
     private com.toedter.calendar.JDateChooser jdfechanacimiento;
     private javax.swing.JDialog jdlogin;
     private javax.swing.JDialog jdregistrarse;
+    private javax.swing.JMenuItem mi_borradores;
+    private javax.swing.JMenuItem mi_eliminados;
+    private javax.swing.JMenuItem mi_leidos;
+    private javax.swing.JMenuItem mi_noleidos;
+    private javax.swing.JMenuItem mi_spam;
     private javax.swing.JPasswordField pfconfirmarpasss;
     private javax.swing.JPasswordField pfpassword;
     private javax.swing.JTextField tfapellido;
@@ -402,4 +508,5 @@ public class Correo extends javax.swing.JFrame {
     private javax.swing.JTextField tfpais;
     private javax.swing.JTextField tftelefono;
     // End of variables declaration//GEN-END:variables
+    ArrayList<Personas> usuarios = new ArrayList();
 }
