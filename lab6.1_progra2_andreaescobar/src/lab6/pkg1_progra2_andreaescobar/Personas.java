@@ -6,7 +6,7 @@ public class Personas {
     private String nombre;
     private String apellido;
     private String correo;
-    private Date fechanacimiento;
+    private String fechanacimiento;
     private String pais;
     private int tel;
     private String pass;
@@ -14,7 +14,7 @@ public class Personas {
     public Personas() {
     }
 
-    public Personas(String nombre, String apellido, String correo, Date fechanacimiento, String pais, int tel, String pass) {
+    public Personas(String nombre, String apellido, String correo, String fechanacimiento, String pais, int tel, String pass) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.correo = correo;
@@ -48,11 +48,11 @@ public class Personas {
         this.correo = correo;
     }
 
-    public Date getFechanacimiento() {
+    public String getFechanacimiento() {
         return fechanacimiento;
     }
 
-    public void setFechanacimiento(Date fechanacimiento) {
+    public void setFechanacimiento(String fechanacimiento) {
         this.fechanacimiento = fechanacimiento;
     }
 

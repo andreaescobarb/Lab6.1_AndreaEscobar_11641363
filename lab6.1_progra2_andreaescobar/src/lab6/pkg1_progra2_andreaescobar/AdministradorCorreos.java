@@ -44,7 +44,7 @@ public class AdministradorCorreos {
         FileWriter fw = null;
         BufferedWriter bw = null;
         try {
-            fw = new FileWriter(archivo, true);
+            fw = new FileWriter(archivo, false);
             bw = new BufferedWriter(fw);
             for (Personas listaPersona : personas) {
                 bw.write(listaPersona.getNombre()+ ";");
@@ -71,7 +71,7 @@ public class AdministradorCorreos {
                 sc = new Scanner(archivo);
                 sc.useDelimiter(";");
                 while (sc.hasNext()) {
-                    personas.add(new Personas(sc.next(),sc.next(),sc.next(), new SimpleDateFormat("dd/MM/yyyy").parse(sc.next()),sc.next(), sc.nextInt(),sc.next()));
+                    personas.add(new Personas(sc.next(),sc.next(),sc.next(), sc.next(),sc.next(), sc.nextInt(),sc.next()));
                     System.out.println(personas.size());
                 }
             } catch (Exception e) {
