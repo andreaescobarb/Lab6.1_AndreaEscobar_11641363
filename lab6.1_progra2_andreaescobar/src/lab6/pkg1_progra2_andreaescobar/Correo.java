@@ -61,6 +61,7 @@ public class Correo extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel16 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        jButton4 = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jPanel4 = new javax.swing.JPanel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -223,6 +224,14 @@ public class Correo extends javax.swing.JFrame {
 
         jLabel16.setText("Escoger Destinatario");
 
+        jComboBox1.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBox1ItemStateChanged(evt);
+            }
+        });
+
+        jButton4.setText("Enviar Mensaje");
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -230,15 +239,21 @@ public class Correo extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap(30, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jButton1)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jLabel14)
-                        .addGap(227, 227, 227)
-                        .addComponent(jLabel16)
-                        .addGap(18, 18, 18)
-                        .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(27, 27, 27))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel14)
+                                .addGap(227, 227, 227)
+                                .addComponent(jLabel16)
+                                .addGap(18, 18, 18)
+                                .addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 581, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(83, 83, 83))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -251,7 +266,9 @@ public class Correo extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(25, Short.MAX_VALUE))
         );
 
@@ -486,35 +503,36 @@ public class Correo extends javax.swing.JFrame {
     private void jbloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbloginActionPerformed
         // TODO add your handling code here:
         AdministradorCorreos admin = new AdministradorCorreos("./salida.txt");
-        int cont=0;
+        int cont = 0;
         admin.cargarArchivo();
         String correo = JOptionPane.showInputDialog("Ingrese su correo");
         String password = JOptionPane.showInputDialog("Ingrese su password");
         for (Personas usuario : admin.getPersonas()) {
             //System.out.println("Entra al for");
-
+            jComboBox1.addItem(admin.getPersonas().get(cont).getNombre());
+            jComboBox2.addItem(admin.getPersonas().get(cont).getNombre());
             if (admin.getPersonas().get(cont).getCorreo().contains("unitec.edu")) {
 
-                if (correo.equals(usuario.getCorreo())) {
-                    if (password.equals(usuario.getPass())) {
+                if (correo.equals(admin.getPersonas().get(cont).getCorreo())) {
+                    if (password.equals(admin.getPersonas().get(cont).getPass())) {
                         jdlogin.pack();
                         jdlogin.setModal(true);
                         jdlogin.setVisible(true);
                         jdlogin.setLocationRelativeTo(this);
                     }
                 }
-            } else if (correo.equals(usuario.getCorreo())) {
-                    if (password.equals(usuario.getPass())) {
-                        jdloginnounitec.pack();
-                        jdloginnounitec.setModal(true);
-                        jdloginnounitec.setVisible(true);
-                        jdloginnounitec.setLocationRelativeTo(this);
-                    }
-                
-            } else {
-                {
-                    JOptionPane.showMessageDialog(this, "Lo siento, su usuario o passcode es incorrecta");
+            } else if (correo.equals(admin.getPersonas().get(cont).getCorreo())) {
+                if (password.equals(admin.getPersonas().get(cont).getPass())) {
+                    jdloginnounitec.pack();
+                    jdloginnounitec.setModal(true);
+                    jdloginnounitec.setVisible(true);
+                    jdloginnounitec.setLocationRelativeTo(this);
                 }
+
+            } else {
+
+                JOptionPane.showMessageDialog(this, "Lo siento, su usuario o passcode es incorrecta");
+
             }
             cont++;
         }
@@ -557,7 +575,7 @@ public class Correo extends javax.swing.JFrame {
                 }
                 if (confirmarcorreo == false) {
                     admin.cargarArchivo();
-                    admin.getPersonas().add(new Personas(nombre, apellido, correo + "@unitec.edu", fechanacimiento, pais, tel, passcode));
+                    admin.getPersonas().add(new Personas(nombre, apellido, correo, fechanacimiento, pais, tel, passcode));
                     admin.escribirArchivo();
                     usuarios.add(new Personas(nombre, apellido, correo, fechanacimiento, pais, tel, passcode));
 
@@ -600,6 +618,13 @@ public class Correo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
+    private void jComboBox1ItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBox1ItemStateChanged
+        // TODO add your handling code here:
+        if (true) {
+
+        }
+    }//GEN-LAST:event_jComboBox1ItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -639,6 +664,7 @@ public class Correo extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
