@@ -503,7 +503,7 @@ public class Correo extends javax.swing.JFrame {
     private void jbloginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbloginActionPerformed
         // TODO add your handling code here:
         AdministradorCorreos admin = new AdministradorCorreos("./salida.txt");
-        int cont = 0;
+        int cont = 0, contunitec = 0, contnounitec = 0;
         admin.cargarArchivo();
         String correo = JOptionPane.showInputDialog("Ingrese su correo");
         String password = JOptionPane.showInputDialog("Ingrese su password");
@@ -515,26 +515,34 @@ public class Correo extends javax.swing.JFrame {
 
                 if (correo.equals(admin.getPersonas().get(cont).getCorreo())) {
                     if (password.equals(admin.getPersonas().get(cont).getPass())) {
-                        jdlogin.pack();
-                        jdlogin.setModal(true);
-                        jdlogin.setVisible(true);
-                        jdlogin.setLocationRelativeTo(this);
+                        
+                        contunitec++;
                     }
                 }
             } else if (correo.equals(admin.getPersonas().get(cont).getCorreo())) {
                 if (password.equals(admin.getPersonas().get(cont).getPass())) {
-                    jdloginnounitec.pack();
-                    jdloginnounitec.setModal(true);
-                    jdloginnounitec.setVisible(true);
-                    jdloginnounitec.setLocationRelativeTo(this);
+                    contnounitec++;
+ 
                 }
-
-            } else {
-
-                JOptionPane.showMessageDialog(this, "Lo siento, su usuario o passcode es incorrecta");
-
             }
+
             cont++;
+        }
+        if (contunitec > 0) {
+            jdlogin.pack();
+            jdlogin.setModal(true);
+            jdlogin.setVisible(true);
+            jdlogin.setLocationRelativeTo(this);
+        } else if (contnounitec > 0) {
+            
+            jdloginnounitec.pack();
+            jdloginnounitec.setModal(true);
+            jdloginnounitec.setVisible(true);
+            jdloginnounitec.setLocationRelativeTo(this);
+        } else {
+
+            JOptionPane.showMessageDialog(this, "Lo siento, su usuario o passcode es incorrecta");
+
         }
     }//GEN-LAST:event_jbloginActionPerformed
 
